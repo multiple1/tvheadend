@@ -561,10 +561,7 @@ static void satips_rtsp_port(int def)
   int rtsp_port = satip_server_rtsp_port;
   if (!satip_server_rtsp_port_locked)
     rtsp_port = satip_server_conf.satip_rtsp > 0 ? satip_server_conf.satip_rtsp : def;
-  if (getuid() != 0 && rtsp_port > 0 && rtsp_port < 1024 && bound_port != rtsp_port) {
-    tvherror(LS_SATIPS, "RTSP port %d specified but no root perms, using 9983", rtsp_port);
-    rtsp_port = 9983;
-  }
+
   satip_server_rtsp_port = rtsp_port;
 
 }
